@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{A490F5A4-7076-4A1E-AC15-5CEA169854E5}"
+	ProjectSection(SolutionItems) = preProject
+		Common\Common.properties = Common\Common.properties
+		Common\Common.targets = Common\Common.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{45AA792C-C859-4ABD-AF56-CFEB5250285D}"
+	ProjectSection(SolutionItems) = preProject
+		BuildAll.build = BuildAll.build
+		Database.properties = Database.properties
+		DeployAll.deploy = DeployAll.deploy
+		DIServer.properties = DIServer.properties
+		Migration.properties = Migration.properties
+		Migration.targets = Migration.targets
+		Common.targets = Common.targets
+		SSDTDemo.build = SSDTDemo.build
+		SSDTDemo.properties = SSDTDemo.properties
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A490F5A4-7076-4A1E-AC15-5CEA169854E5} = {45AA792C-C859-4ABD-AF56-CFEB5250285D}
+	EndGlobalSection
+EndGlobal

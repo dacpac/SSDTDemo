@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="8bfce1cb-65b8-4381-b46e-f8d225cb416f" ChangeDateTime="04/26/2013 12:20:57">
+    <Property Name="ElementName" Value="[dbo].[DacChecksum].[Color]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[DacChecksum]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[Colour]" />
+  </Operation>
+</Operations>

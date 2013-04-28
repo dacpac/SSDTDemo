@@ -1,0 +1,19 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+
+  <!-- Property Group settings are to be stored in the Migration.properties file  -->
+  <Import Project="SSDTDemo.properties"/>
+
+  <Target Name="Validate">
+    <Error Condition="'$(Environment)'==''" Text="Please define Environment property, available values [DEV] [INT] [RC] [PREPROD] [LIVE]" />
+    <Error Condition="'$(Service)'==''" Text="Please define Service property, IE [SSDTDemo] etc..." />
+  </Target>
+
+  <Target Name="CleanAll">
+    <RemoveDir Directories="$(MBuildDir)" />
+  </Target>
+
+  <Target Name="CleanSQLBitsXI">
+    <RemoveDir Directories="$(MBuildDir)\SQLBitsXI" />
+  </Target>
+  
+</Project>

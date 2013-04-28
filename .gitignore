@@ -1,0 +1,46 @@
+/build
+/Build
+/deploy
+/package
+bin/
+obj/
+sql/
+#ignore thumbnails created by windows
+Thumbs.db
+#Ignore files build by Visual Studio
+*.obj
+*.pdb
+*.user
+*.aps
+*.pch
+*.docstates
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.dbmdl
+*.schemaview
+*.tlh
+*.cache
+*.ilk
+*.log
+[Bb]in
+[Dd]ebug*/
+*.lib
+*.sbr
+obj/
+[Rr]elease*/
+_ReSharper*/
+[Tt]est[Rr]esult*
+*.docstates
+*.swp
+*.*~
+*.gpState
+*.ReSharper*
+*.preflight
+*.nocommit
+#Ignore Recovery Files made by Excel
+~$*.xlsx
+*.rdl.data

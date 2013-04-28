@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseName>SSDTDemo</TargetDatabaseName>
+    <DeployScriptFileName>SSDTDemo.sql</DeployScriptFileName>
+    <ScriptDatabaseOptions>True</ScriptDatabaseOptions>
+    <BlockOnPossibleDataLoss>True</BlockOnPossibleDataLoss>
+    <IncludeTransactionalScripts>True</IncludeTransactionalScripts>
+    <ProfileVersionNumber>1</ProfileVersionNumber>
+    <TargetConnectionString>Data Source=qfy56v2syy.database.windows.net;Persist Security Info=True;User ID=craig;Pooling=False</TargetConnectionString>
+  </PropertyGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="DacCheckSum">
+      <Value>00000000-0000-0000-0000-000000000000</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
+</Project>
