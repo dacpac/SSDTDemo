@@ -1,0 +1,170 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+         DefaultTargets="Deploy"
+         ToolsVersion="4.0">
+
+  <!-- Property Group settings are to be stored in the Migration.properties file  -->
+  <Import Project="Common.targets"/>
+
+  <Choose>
+
+    <!-- AdventureWorks -->
+    <When Condition="'$(Service)'=='AdventureWorks'">
+      <ItemGroup>
+        <Dacpac Include="$(MBuildDir)\AdventureWorks2008R2\AdventureWorks2008R2.dacpac">
+          <TargetDatabase>$(Service)</TargetDatabase>
+          <!-- SqlPackageProperties is a placeholder for SqlPackage properties specific to this sqlproj deployment -->
+          <SqlPackageProperties>/p:Storage=Memory /p:VerifyDeployment=True</SqlPackageProperties>
+          <SqlCmdVariables>/v:DacChecksum=$(Revision)</SqlCmdVariables>
+          <OutputMessage>%0D%0A     _       _                 _                   __        __         _        %0D%0A    / \   __| |_   _____ _ __ | |_ _   _ _ __ ___  \ \      / /__  _ __| | _____ %0D%0A   / _ \ / _` \ \ / / _ \ '_ \| __| | | | '__/ _ \  \ \ /\ / / _ \| '__| |/ / __|%0D%0A  / ___ \ (_| |\ V /  __/ | | | |_| |_| | | |  __/   \ V  V / (_) | |  |   &lt;\__ \%0D%0A /_/   \_\__,_| \_/ \___|_| |_|\__|\__,_|_|  \___|    \_/\_/ \___/|_|  |_|\_\___/</OutputMessage>
+        </Dacpac>
+      </ItemGroup>
+    </When>
+
+
+    <!-- HumanResources -->
+    <When Condition="'$(Service)'=='HumanResources'">
+      <ItemGroup>
+        <DacpacCore Include="$(MBuildDir)\Core\Core.dacpac">
+          <TargetDatabase>$(Service)</TargetDatabase>
+          <!-- SqlPackageProperties is a placeholder for SqlPackage properties specific to this sqlproj deployment -->
+          <SqlPackageProperties>$(SqlPackageCoreDBProperties)</SqlPackageProperties>
+          <SqlCmdVariables>$(SqlCmdCoreDBVariables)</SqlCmdVariables>
+        </DacpacCore>
+        <Dacpac Include="$(MBuildDir)\HumanResources\HumanResources.dacpac">
+          <TargetDatabase>$(Service)</TargetDatabase>
+          <!-- SqlPackageProperties is a placeholder for SqlPackage properties specific to this sqlproj deployment -->
+          <SqlPackageProperties>$(SqlPackageCoreDBProperties)</SqlPackageProperties>
+          <SqlCmdVariables>/v:DacChecksum=$(Revision)</SqlCmdVariables>
+          <OutputMessage>%0D%0A  _   _                               ____                                         %0D%0A | | | |_   _ _ __ ___   __ _ _ __   |  _ \ ___  ___  ___  _   _ _ __ ___ ___  ___ %0D%0A | |_| | | | | '_ ` _ \ / _` | '_ \  | |_) / _ \/ __|/ _ \| | | | '__/ __/ _ \/ __|%0D%0A |  _  | |_| | | | | | | (_| | | | | |  _ &lt;  __/\__ \ (_) | |_| | | | (_|  __/\__ \%0D%0A |_| |_|\__,_|_| |_| |_|\__,_|_| |_| |_| \_\___||___/\___/ \__,_|_|  \___\___||___/</OutputMessage>
+        </Dacpac>
+      </ItemGroup>
+    </When>
+
+    <!-- Person -->
+    <When Condition="'$(Service)'=='Person'">
+      <ItemGroup>
+        <DacpacCore Include="$(MBuildDir)\Core\Core.dacpac">
+          <TargetDatabase>$(Service)</TargetDatabase>
+          <!-- SqlPackageProperties is a placeholder for SqlPackage properties specific to this sqlproj deployment -->
+          <SqlPackageProperties>$(SqlPackageCoreDBProperties)</SqlPackageProperties>
+          <SqlCmdVariables>$(SqlCmdCoreDBVariables)</SqlCmdVariables>
+        </DacpacCore>
+        <Dacpac Include="$(MBuildDir)\Person\Person.dacpac">
+          <TargetDatabase>$(Service)</TargetDatabase>
+          <!-- SqlPackageProperties is a placeholder for SqlPackage properties specific to this sqlproj deployment -->
+          <SqlPackageProperties>$(SqlPackageCoreDBProperties)</SqlPackageProperties>
+          <SqlCmdVariables>/v:DacChecksum=$(Revision)</SqlCmdVariables>
+          <OutputMessage>%0D%0A  ____                           %0D%0A |  _ \ ___ _ __ ___  ___  _ __  %0D%0A | |_) / _ \ '__/ __|/ _ \| '_ \ %0D%0A |  __/  __/ |  \__ \ (_) | | | |%0D%0A |_|   \___|_|  |___/\___/|_| |_|</OutputMessage>
+        </Dacpac>
+      </ItemGroup>
+    </When>
+
+    <!-- Production -->
+    <When Condition="'$(Service)'=='Production'">
+      <ItemGroup>
+        <DacpacCore Include="$(MBuildDir)\Core\Core.dacpac">
+          <TargetDatabase>$(Service)</TargetDatabase>
+          <!-- SqlPackageProperties is a placeholder for SqlPackage properties specific to this sqlproj deployment -->
+          <SqlPackageProperties>$(SqlPackageCoreDBProperties)</SqlPackageProperties>
+          <SqlCmdVariables>$(SqlCmdCoreDBVariables)</SqlCmdVariables>
+        </DacpacCore>
+        <Dacpac Include="$(MBuildDir)\Production\Production.dacpac">
+          <TargetDatabase>$(Service)</TargetDatabase>
+          <!-- SqlPackageProperties is a placeholder for SqlPackage properties specific to this sqlproj deployment -->
+          <SqlPackageProperties>$(SqlPackageCoreDBProperties)</SqlPackageProperties>
+          <SqlCmdVariables>/v:DacChecksum=$(Revision)</SqlCmdVariables>
+          <OutputMessage>%0D%0A  ____                _            _   _             %0D%0A |  _ \ _ __ ___   __| |_   _  ___| |_(_) ___  _ __  %0D%0A | |_) | '__/ _ \ / _` | | | |/ __| __| |/ _ \| '_ \ %0D%0A |  __/| | | (_) | (_| | |_| | (__| |_| | (_) | | | |%0D%0A |_|   |_|  \___/ \__,_|\__,_|\___|\__|_|\___/|_| |_|</OutputMessage>
+        </Dacpac>
+      </ItemGroup>
+    </When>
+
+    <!-- Purchasing -->
+    <When Condition="'$(Service)'=='Purchasing'">
+      <ItemGroup>
+        <DacpacCore Include="$(MBuildDir)\Core\Core.dacpac">
+          <TargetDatabase>$(Service)</TargetDatabase>
+          <!-- SqlPackageProperties is a placeholder for SqlPackage properties specific to this sqlproj deployment -->
+          <SqlPackageProperties>$(SqlPackageCoreDBProperties)</SqlPackageProperties>
+          <SqlCmdVariables>$(SqlCmdCoreDBVariables)</SqlCmdVariables>
+        </DacpacCore>
+        <Dacpac Include="$(MBuildDir)\Purchasing\Purchasing.dacpac">
+          <TargetDatabase>$(Service)</TargetDatabase>
+          <!-- SqlPackageProperties is a placeholder for SqlPackage properties specific to this sqlproj deployment -->
+          <SqlPackageProperties>$(SqlPackageCoreDBProperties)</SqlPackageProperties>
+          <SqlCmdVariables>/v:DacChecksum=$(Revision)</SqlCmdVariables>
+          <OutputMessage>%0D%0A  ____                 _               _             %0D%0A |  _ \ _   _ _ __ ___| |__   __ _ ___(_)_ __   __ _ %0D%0A | |_) | | | | '__/ __| '_ \ / _` / __| | '_ \ / _` |%0D%0A |  __/| |_| | | | (__| | | | (_| \__ \ | | | | (_| |%0D%0A |_|    \__,_|_|  \___|_| |_|\__,_|___/_|_| |_|\__, |%0D%0A                                               |___/ </OutputMessage>
+        </Dacpac>
+      </ItemGroup>
+    </When>
+
+    <!-- Sales -->
+    <When Condition="'$(Service)'=='Sales'">
+      <ItemGroup>
+        <DacpacCore Include="$(MBuildDir)\Core\Core.dacpac">
+          <TargetDatabase>$(Service)</TargetDatabase>
+          <!-- SqlPackageProperties is a placeholder for SqlPackage properties specific to this sqlproj deployment -->
+          <SqlPackageProperties>$(SqlPackageCoreDBProperties)</SqlPackageProperties>
+          <SqlCmdVariables>$(SqlCmdCoreDBVariables)</SqlCmdVariables>
+        </DacpacCore>
+        <Dacpac Include="$(MBuildDir)\Sales\Sales.dacpac">
+          <TargetDatabase>$(Service)</TargetDatabase>
+          <!-- SqlPackageProperties is a placeholder for SqlPackage properties specific to this sqlproj deployment -->
+          <SqlPackageProperties>$(SqlPackageCoreDBProperties)</SqlPackageProperties>
+          <SqlCmdVariables>/v:DacChecksum=$(Revision)</SqlCmdVariables>
+          <OutputMessage>%0D%0A  ____        _           %0D%0A / ___|  __ _| | ___  ___ %0D%0A \___ \ / _` | |/ _ \/ __|%0D%0A  ___) | (_| | |  __/\__ \%0D%0A |____/ \__,_|_|\___||___/</OutputMessage>
+        </Dacpac>
+      </ItemGroup>
+    </When>
+
+  </Choose>
+
+  <Target DependsOnTargets="Validate" Name="Deploy">
+    <Message Text="%(Dacpac.OutputMessage)" />
+
+    <!-- ** Begin Action:Publish No publish xml ** -->
+    <!--<Exec Command="&quot;$(SqlPackagePath)&quot; /Action:Publish /SourceFile:&quot;%(Dacpac.Identity)&quot; /TargetServerName:&quot;$(DeployToServer)&quot; /TargetDatabaseName:&quot;%(Dacpac.TargetDatabase)&quot; %(Dacpac.SqlCmdVariables) %(Dacpac.SqlPackageProperties)"
+          Condition="Exists('%(Dacpac.Identity)')" />-->
+    <!-- ^^^ Contents ^^^
+    <Exec Command="&quot;$(SqlPackagePath)&quot; 
+                  /Action:Publish 
+                  /SourceFile:&quot;%(Dacpac.Identity)&quot; 
+                  /TargetServerName:&quot;$(DeployToServer)&quot; 
+                  /TargetDatabaseName:&quot;%(Dacpac.TargetDatabase)&quot; 
+                  %(Dacpac.SqlCmdVariables) 
+                  %(Dacpac.SqlPackageProperties)"
+          Condition="Exists('%(Dacpac.Identity)')" />-->
+    <!-- ** End Action:Publish No publish xml ** -->
+
+    <!-- ** Begin Action:Script ** -->
+    <!-- Core -->
+    <Exec Command="&quot;$(SqlPackagePath)&quot; /Action:Script /SourceFile:&quot;%(DacpacCore.Identity)&quot; /OutputPath:&quot;%(DacpacCore.RelativeDir)%(DacpacCore.TargetDatabase).CoreBb.publish.sql&quot; /TargetServerName:&quot;$(DeployToServer)&quot; /TargetDatabaseName:&quot;%(DacpacCore.TargetDatabase)&quot; %(DacpacCore.SqlCmdVariables) %(DacpacCore.SqlPackageProperties)"
+          Condition="Exists('%(DacpacCore.Identity)')" />
+    <Exec Command="sqlcmd.exe -S &quot;$(DeployToServer)&quot; -b -i &quot;%(DacpacCore.RelativeDir)%(DacpacCore.TargetDatabase).CoreBb.publish.sql&quot;"
+          Condition="Exists('%(DacpacCore.Identity)')" />
+
+    <!-- Main -->
+    <Exec Command="&quot;$(SqlPackagePath)&quot; /Action:Script /SourceFile:&quot;%(Dacpac.Identity)&quot; /OutputPath:&quot;%(Dacpac.RelativeDir)%(Dacpac.TargetDatabase).publish.sql&quot; /TargetServerName:&quot;$(DeployToServer)&quot; /TargetDatabaseName:&quot;%(Dacpac.TargetDatabase)&quot; %(Dacpac.SqlCmdVariables) %(Dacpac.SqlPackageProperties)"
+          Condition="Exists('%(Dacpac.Identity)')" />
+    <!-- ^^^ Contents ^^^
+    <Exec Command="&quot;$(SqlPackagePath)&quot; 
+                  /Action:Script 
+                  /SourceFile:&quot;%(Dacpac.Identity)&quot; 
+                  /OutputPath:&quot;%(Dacpac.RelativeDir)%(Dacpac.TargetDatabase).publish.sql&quot; 
+                  /TargetServerName:&quot;$(DeployToServer)&quot; 
+                  /TargetDatabaseName:&quot;%(Dacpac.TargetDatabase)&quot;
+                  %(Dacpac.SqlCmdVariables) 
+                  %(Dacpac.SqlPackageProperties)"
+          Condition="Exists('%(Dacpac.Identity)')" />-->
+
+    <Exec Command="sqlcmd.exe -S &quot;$(DeployToServer)&quot; -b -i &quot;%(Dacpac.RelativeDir)%(Dacpac.TargetDatabase).publish.sql&quot;" 
+          Condition="Exists('%(Dacpac.Identity)')" />
+    <!-- ^^^ Contents ^^^
+    <Exec Command="sqlcmd.exe -S &quot;$(DeployToServer)&quot; 
+                  -b 
+                  -i &quot;%(Dacpac.RelativeDir)%(Dacpac.TargetDatabase).publish.sql&quot;"
+          Condition="Exists('%(Dacpac.Identity)')" /> -->
+    <!-- ** End Action:Script ** -->
+
+  </Target>
+
+</Project>

@@ -1,0 +1,72 @@
+<Project DefaultTargets ="BuildAll" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <Import Project="Common.targets"/>
+
+  <PropertyGroup>
+    <!--<BuildAll>
+      BuildAdventureWorks;
+    </BuildAll>-->
+    <BuildAll>
+      BuildCore;
+      BuildHumanResources;
+      BuildPerson;
+      BuildProduction;
+      BuildPurchasing;
+      BuildSales
+    </BuildAll>
+  </PropertyGroup>
+
+  <Target Name="BuildAll">
+    <CallTarget Targets="$(BuildAll)" RunEachTargetSeparately="false" />
+  </Target>
+
+  <Target DependsOnTargets="CleanAdventureWorks" Name="BuildAdventureWorks">
+    <ItemGroup>
+      <SqlProject Include="$(RootDir)\..\AdventureWorks2008R2\AdventureWorks2008R2.sqlproj" />
+    </ItemGroup>
+    <MSBuild Projects="@(SqlProject)" Properties="OutDir=$(MBuildDir)\%(SqlProject.Filename)\" />
+  </Target>
+
+  <Target DependsOnTargets="CleanCore" Name="BuildCore">
+    <ItemGroup>
+      <SqlProject Include="$(RootDir)\..\Core\Core.sqlproj" />
+    </ItemGroup>
+    <MSBuild Projects="@(SqlProject)" Properties="OutDir=$(MBuildDir)\%(SqlProject.Filename)\" />
+  </Target>
+
+  <Target DependsOnTargets="CleanHumanResources" Name="BuildHumanResources">
+    <ItemGroup>
+      <SqlProject Include="$(RootDir)\..\HumanResources\HumanResources.sqlproj" />
+    </ItemGroup>
+    <MSBuild Projects="@(SqlProject)" Properties="OutDir=$(MBuildDir)\%(SqlProject.Filename)\" />
+  </Target>
+
+  <Target DependsOnTargets="CleanPerson" Name="BuildPerson">
+    <ItemGroup>
+      <SqlProject Include="$(RootDir)\..\Person\Person.sqlproj" />
+    </ItemGroup>
+    <MSBuild Projects="@(SqlProject)" Properties="OutDir=$(MBuildDir)\%(SqlProject.Filename)\" />
+  </Target>
+
+  <Target DependsOnTargets="CleanProduction" Name="BuildProduction">
+    <ItemGroup>
+      <SqlProject Include="$(RootDir)\..\Production\Production.sqlproj" />
+    </ItemGroup>
+    <MSBuild Projects="@(SqlProject)" Properties="OutDir=$(MBuildDir)\%(SqlProject.Filename)\" />
+  </Target>
+
+  <Target DependsOnTargets="CleanPurchasing" Name="BuildPurchasing">
+    <ItemGroup>
+      <SqlProject Include="$(RootDir)\..\Purchasing\Purchasing.sqlproj" />
+    </ItemGroup>
+    <MSBuild Projects="@(SqlProject)" Properties="OutDir=$(MBuildDir)\%(SqlProject.Filename)\" />
+  </Target>
+
+  <Target DependsOnTargets="CleanSales" Name="BuildSales">
+    <ItemGroup>
+      <SqlProject Include="$(RootDir)\..\Sales\Sales.sqlproj" />
+    </ItemGroup>
+    <MSBuild Projects="@(SqlProject)" Properties="OutDir=$(MBuildDir)\%(SqlProject.Filename)\" />
+  </Target>
+
+</Project>

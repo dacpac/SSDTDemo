@@ -1,0 +1,19 @@
+SELECT  [Id]
+      , [DacChecksum]
+FROM    [HumanResources].[dbo].[DacChecksum]
+UNION ALL
+SELECT  [Id]
+      , [DacChecksum]
+FROM    [Person].[dbo].[DacChecksum]
+UNION ALL
+SELECT  [Id]
+      , [DacChecksum]
+FROM    [Production].[dbo].[DacChecksum]
+UNION ALL
+SELECT  [Id]
+      , [DacChecksum]
+FROM    [Purchasing].[dbo].[DacChecksum]
+UNION ALL
+SELECT  [Id]
+      , [DacChecksum]
+FROM    [Sales].[dbo].[DacChecksum]

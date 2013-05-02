@@ -1,0 +1,43 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+
+  <!-- Property Group settings are to be stored in the Migration.properties file  -->
+  <Import Project="SSDTDemo.properties"/>
+
+  <Target Name="Validate">
+    <Error Condition="'$(Service)'==''" Text="Please define Service property, IE [AdventureWorks] [Core] etc..." />
+    <Error Condition="'$(DeployTo)'==''" Text="Please define DeployTo property, available values [DEV] [INT] [RC] [PREPROD] [LIVE]." />
+  </Target>
+
+  <Target Name="CleanAll">
+    <RemoveDir Directories="$(MBuildDir)" />
+  </Target>
+
+  <Target Name="CleanAdventureWorks">
+    <RemoveDir Directories="$(MBuildDir)\AdventureWorks2008R2" />
+  </Target>
+
+  <Target Name="CleanCore">
+    <RemoveDir Directories="$(MBuildDir)\Core" />
+  </Target>
+
+  <Target Name="CleanHumanResources">
+    <RemoveDir Directories="$(MBuildDir)\HumanResources" />
+  </Target>
+
+  <Target Name="CleanPerson">
+    <RemoveDir Directories="$(MBuildDir)\Person" />
+  </Target>
+  
+  <Target Name="CleanProduction">
+    <RemoveDir Directories="$(MBuildDir)\Production" />
+  </Target>
+  
+  <Target Name="CleanPurchasing">
+    <RemoveDir Directories="$(MBuildDir)\Purchasing" />
+  </Target>
+  
+  <Target Name="CleanSales">
+    <RemoveDir Directories="$(MBuildDir)\Sales" />
+  </Target>
+
+</Project>

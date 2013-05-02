@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Core</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{e730584b-91a9-4fee-bcea-88eb7ec5c6dd}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql100DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Core</RootNamespace>
+    <AssemblyName>Core</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultFilegroup>DATA</DefaultFilegroup>
+    <CompatibilityMode>100</CompatibilityMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- VS10 without SP1 will not have VisualStudioVersion set, so do that here -->
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <!-- Default to the v10.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Database Triggers" />
+    <Folder Include="dbo" />
+    <Folder Include="dbo\Functions" />
+    <Folder Include="dbo\Stored Procedures" />
+    <Folder Include="dbo\Tables" />
+    <Folder Include="dbo\User Defined Types" />
+    <Folder Include="Storage" />
+    <Folder Include="Storage\Filegroups" />
+    <Folder Include="Storage\Files" />
+    <Folder Include="Scripts" />
+    <Folder Include="Scripts\Pre-Deployment" />
+    <Folder Include="Scripts\Pre-Deployment\DBOwner" />
+    <Folder Include="Scripts\Pre-Deployment\Security" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Database Triggers\ddlDatabaseTriggerLog.sql" />
+    <Build Include="dbo\Functions\ufnGetAccountingEndDate.sql" />
+    <Build Include="dbo\Functions\ufnGetAccountingStartDate.sql" />
+    <Build Include="dbo\Functions\ufnGetDocumentStatusText.sql" />
+    <Build Include="dbo\Functions\ufnGetPurchaseOrderStatusText.sql" />
+    <Build Include="dbo\Functions\ufnGetSalesOrderStatusText.sql" />
+    <Build Include="dbo\Functions\ufnLeadingZeros.sql" />
+    <Build Include="dbo\Stored Procedures\uspLogError.sql" />
+    <Build Include="dbo\Stored Procedures\uspPrintError.sql" />
+    <Build Include="dbo\Tables\AWBuildVersion.sql" />
+    <Build Include="dbo\Tables\DacChecksum.table.sql" />
+    <Build Include="dbo\Tables\DatabaseLog.sql" />
+    <Build Include="dbo\Tables\ErrorLog.sql" />
+    <Build Include="dbo\User Defined Types\AccountNumber.sql" />
+    <Build Include="dbo\User Defined Types\Flag.sql" />
+    <Build Include="dbo\User Defined Types\Name.sql" />
+    <Build Include="dbo\User Defined Types\NameStyle.sql" />
+    <Build Include="dbo\User Defined Types\OrderNumber.sql" />
+    <Build Include="dbo\User Defined Types\Phone.sql" />
+    <Build Include="Storage\Filegroups\DATA.filegroup.sql" />
+    <Build Include="Storage\Filegroups\NONCLUSTEREDINDEXES.filegroup.sql" />
+    <Build Include="Storage\Files\DataFile.sqlfile.sql" />
+    <Build Include="Storage\Files\NonClusteredIndexesFile.sqlfile.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="DBOwner">
+      <DefaultValue>SetOnDeployment</DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="MasterKeyDecryptionBy">
+      <DefaultValue>SetOnDeployment</DefaultValue>
+      <Value>$(SqlCmdVar__3)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="MasterKeyEncryptionBy">
+      <DefaultValue>SetOnDeployment</DefaultValue>
+      <Value>$(SqlCmdVar__2)</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\Pre-Deployment\DBOwner\ChangeDBOwner.alter.sql" />
+    <None Include="Scripts\Pre-Deployment\Security\MasterKey.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PreDeploy Include="Scripts\Pre-Deployment\Script.PreDeployment.sql" />
+  </ItemGroup>
+</Project>
